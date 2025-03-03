@@ -26,7 +26,7 @@ Using Python and SQLAlchemy to do basic climate analysis and data exploration of
 2. Designed a query to find the most-activate stations (stations with most rows).  
 
 - Listed the stations and observation counts in the descending order.  
-- station id has the greatest number of observations.  
+- USC00519281 station id has the greatest number of observations.  
 
 3. Designed a query that calculates the lowest, highest, and average temperatures that filters on the most-active station id found in the previous query.  
 4. Designed a query to get the previous 12 months of temperature observations (TOBS) data.  
@@ -37,4 +37,22 @@ Using Python and SQLAlchemy to do basic climate analysis and data exploration of
 ![alt text](SurfsUp/Output/Last_12months_Temperature_Observations.png)
 5. Closed session.
 ## Part 2: Design Your Climate App
-
+Designed Flask API based on the queries developed in part 1.  
+1. /  
+- Start at the homepage.  
+- List all the available routes.  
+2. /api/v1.0/precipitation  
+- Converted the query results from percipitation analysis to a dictionary using date as the key and prcp as the value.  
+- Returned the JSON representation dictionary.  
+3. /api/v1.0/stations  
+- Returned a JSON list of stations from the dataset.  
+4. /api/v1.0/tobs  
+- Query the dates and temperature observations of the most-active station for the previous year of data.  
+- Returned a JSON list of temperature obervations for the previous year.  
+5. /api/v1.0/<\start>\ and /api/v1.0/<\start>\/<\end>\  
+- Returned a JSON list of the minimum temperature, the average temperature, and the maximum temperature for a specified start or start-end range.  
+- For a specified start, calculate TMIN, TAVG, and TMAX for all the dates greater than or equal to the start date.  
+- For a specified start date and end date, calculate TMIN, TAVG, and TMAX for the dates from the start date to the end date, inclusive.
+# References:
+Menne, M.J., I. Durre, R.S. Vose, B.E. Gleason, and T.G. Houston, 2012: An overview of the Global Historical Climatology Network-Daily Database. Journal of Atmospheric and Oceanic Technology, 29, 897-910, https://journals.ametsoc.org/view/journals/atot/29/7/jtech-d-11-00103_1.xml  
+Used google for .func, *sel, datetime.strptime, np.ravel, and timedelta, accessed March 2025.
